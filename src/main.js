@@ -1,7 +1,7 @@
 /*
  * @Date: 2023-03-08 16:27:55
  * @LastEditors: NeoJoke
- * @LastEditTime: 2023-03-14 20:49:58
+ * @LastEditTime: 2023-03-15 14:19:00
  * @FilePath: /tailwindcss_life/src/main.js
  */
 import { createApp, provide, ref } from 'vue'
@@ -24,7 +24,10 @@ WS_CONNECTIONOR.subject.subscribe({
     next: msg => {
         if (msg.method && msg.method === "appInfo" && _.isArray(msg.param)){
             let di = _.reduce(msg.param, (obj, item)=>{
-                obj[item.appInfo.deviceId] = item
+                if (_.isObject(item.appInfo) && _.isObject(item.serviceInfo)){
+                    item.updateTime = Date.now()
+                    obj[item.appInfo.deviceId] = item
+                }
                 return obj
             }, {})
             console.info('123', di)

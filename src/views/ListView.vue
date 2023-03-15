@@ -1,7 +1,7 @@
 <!--
  * @Date: 2023-03-09 14:18:25
  * @LastEditors: NeoJoke
- * @LastEditTime: 2023-03-14 20:46:30
+ * @LastEditTime: 2023-03-15 14:19:11
  * @FilePath: /tailwindcss_life/src/views/ListView.vue
 -->
 <template>
@@ -82,8 +82,8 @@
               <br />
               <span class="badge badge-ghost badge-sm">{{ item.appInfo.platform }}</span>
             </td>
-            <td>{{ item.serviceInfo.network }}</td>
-            <td>{{ Date(item.connetStartTimestamp) }}</td>
+            <td>{{ item.serviceInfo?.network }}</td>
+            <td>{{ Date(item.updateTime) }}</td>
             <td>123</td>
             <th>
               <button class="btn btn-xs" @click="goDetail(idx, item)">details</button>
@@ -101,7 +101,6 @@ import _ from 'lodash'
 
 const router = useRouter()
 const devicesInfo = inject('devicesInfo', {})
-console.info("1",devicesInfo)
 onMounted(() => {
   console.info("ListView mounted");
 });

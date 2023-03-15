@@ -1,289 +1,392 @@
 <!--
  * @Date: 2023-03-09 14:18:39
  * @LastEditors: NeoJoke
- * @LastEditTime: 2023-03-14 21:59:38
+ * @LastEditTime: 2023-03-15 15:03:01
  * @FilePath: /tailwindcss_life/src/views/InfoDetailView.vue
 -->
 <template>
   <div class="mx-auto flex flex-row space-x-5">
-    <div class=" basis-1/3 overflow-y-auto  container mx-auto flex flex-col items-center space-y-2 w-full">
+    <div
+      class="basis-1/3 overflow-y-auto container mx-auto flex flex-col items-center space-y-2 w-full"
+    >
       <div class="stats shadow text-primary-content bg-green-400 w-full">
-          <div class="stat">
-            <div class="stat-figure">
-              <svg
-                xmlns="http://www.w3.org/2000/svg"
-                fill="none"
-                viewBox="0 0 24 24"
-                stroke-width="1.5"
-                stroke="currentColor"
-                class="w-10 h-10 stroke-2 text-yellow-50 animate-pulse duration-100"
-              >
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
-                />
-              </svg>
-            </div>
-            <div class="stat-title">State</div>
-            <div class="stat-value">Online</div>
-            <div class="stat-desc">Now</div>
-          </div>
-
-          <div class="stat">
-            <div class="stat-title">Duration</div>
-            <div class="stat-value">120mins</div>
-            <div class="stat-desc">Today</div>
-          </div>
-        </div>
-        <div
-          tabindex="0"
-          class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box w-full"
-        >
-          <div class="collapse-title text-xl font-medium">App info</div>
-          <div class="collapse-content p-0">
-            <div class="overflow-hidden">
-              <div class="border-t bor border-gray-200">
-                <dl>
-                  <div
-                    class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-                  >
-                    <dt class="text-sm font-medium text-gray-500">Device id</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      {{ deviceId}}
-                    </dd>
-                  </div>
-                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">Source</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      {{ devicesInfo[deviceId]?.platform}}
-                    </dd>
-                  </div>
-                  <div
-                    class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-                  >
-                    <dt class="text-sm font-medium text-gray-500">IP address</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      {{ devicesInfo[deviceId]?.ip}}
-                    </dd>
-                  </div>
-                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">App version</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      {{ devicesInfo[deviceId]?.appInfo?.version}}
-                    </dd>
-                  </div>
-                  <div
-                    class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-                  >
-                    <dt class="text-sm font-medium text-gray-500">Platfrom</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      {{ devicesInfo[deviceId]?.appInfo?.platform}}
-                    </dd>
-                  </div>
-                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">System version</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      {{ devicesInfo[deviceId]?.appInfo?.systemVersion}}
-                    </dd>
-                  </div>
-                  <div
-                    class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-                  >
-                    <dt class="text-sm font-medium text-gray-500">Model</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      {{ devicesInfo[deviceId]?.appInfo?.model}}
-                    </dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          tabindex="0"
-          class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box w-full"
-        >
-          <div class="collapse-title text-xl font-medium">Service info</div>
-          <div class="collapse-content p-0">
-            <div class="overflow-hidden">
-              <div class="border-t bor border-gray-200">
-                <dl>
-                  <div
-                    class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-                  >
-                    <dt class="text-sm font-medium text-gray-500">User ID</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      {{ devicesInfo[deviceId]?.serviceInfo?.userId}}
-                    </dd>
-                  </div>
-                  <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
-                    <dt class="text-sm font-medium text-gray-500">User name</dt>
-                    <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      {{ devicesInfo[deviceId]?.serviceInfo?.userName}}
-                    </dd>
-                  </div>
-                  <div
-                    class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-                  >
-                    <dt class="text-sm font-medium text-gray-500">Audio service</dt>
-                    <dd></dd>
-                    <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      enable
-                    </dt>
-                    <dd>
-                      <span v-if="devicesInfo[deviceId]?.serviceInfo?.audioService?.enable" class="relative flex h-3 w-3">
-                        <span
-                          class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75"
-                        ></span>
-                        <span
-                          class="inline-flex rounded-full h-3 w-3 bg-green-500"
-                        ></span>
-                      </span>
-                      <span v-else class="relative flex h-3 w-3">
-                        <span class="inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                      </span>
-                    </dd>
-                    <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      audioState
-                    </dt>
-                    <dd><input type="checkbox" class="toggle toggle-sm toggle-success" :checked="devicesInfo[deviceId]?.serviceInfo?.audioService?.audioState === '1'" /></dd>
-                    <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      other app is recording
-                    </dt>
-                    <dd>
-                      <input type="checkbox" class="toggle toggle-warning toggle-sm" :checked="devicesInfo[deviceId]?.serviceInfo?.audioService?.otherAppIsRecording === true" />
-                    </dd>
-                  </div>
-                  <div
-                    class="bg-white-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-                  >
-                    <dt class="text-sm font-medium text-gray-500">Gps service</dt>
-                    <dd></dd>
-                    <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      enable
-                    </dt>
-                    <dd>
-                      <span v-if="devicesInfo[deviceId]?.serviceInfo?.gpsService?.enable === true" class="relative flex h-3 w-3">
-                        <span
-                          class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75"
-                        ></span>
-                        <span
-                          class="inline-flex rounded-full h-3 w-3 bg-green-500"
-                        ></span>
-                      </span>
-                      <span v-else class="relative flex h-3 w-3">
-                        <span class="inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                      </span>
-                    </dd>
-                    <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">lat</dt>
-                    <dd>{{ devicesInfo[deviceId]?.serviceInfo?.gpsService?.latitude?.toFixed(5) }}</dd>
-                    <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">long</dt>
-                    <dd>{{ devicesInfo[deviceId]?.serviceInfo?.gpsService?.longitude?.toFixed(5) }}</dd>
-                    <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">address</dt>
-                    <dd><p>{{ devicesInfo[deviceId]?.serviceInfo?.gpsService?.address }}</p></dd>
-                  </div>
-                  <div
-                    class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6"
-                  >
-                    <dt class="text-sm font-medium text-gray-500">Audio service</dt>
-                    <dd></dd>
-                    <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      enable
-                    </dt>
-                    <dd>
-                      <span v-if="devicesInfo[deviceId]?.serviceInfo?.stepService?.enable === true" class="relative flex h-3 w-3">
-                        <span
-                          class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75"
-                        ></span>
-                        <span
-                          class="inline-flex rounded-full h-3 w-3 bg-green-500"
-                        ></span>
-                      </span>
-                      <span v-else class="relative flex h-3 w-3">
-                        <span class="inline-flex rounded-full h-3 w-3 bg-red-500"></span>
-                      </span>
-                    </dd>
-                    <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
-                      count
-                    </dt>
-                    <dd>{{devicesInfo[deviceId]?.serviceInfo?.stepService?.count}}</dd>
-                  </div>
-                </dl>
-              </div>
-            </div>
-          </div>
-        </div>
-    </div>
-    <div class="basis-2/3 ">
-      <div class="tabs tab-lg">
-      <a class="tab tab-bordered tab-active">Online time line</a>
-      <a class="tab tab-bordered">Data list</a>
-      <a class="tab tab-bordered">Commands</a>
-    </div>
-    <div class="card mt-5">
-      <div class="text-lg">TimeLine</div>
-      <div id="timeline5"></div>
-    </div>
-    <div class="card mt-5">
-      <div class="flex flex-row items-center justify-between">
-        <div class="text-lg mb-4">
-          Path replay <span class="text-xs">2023.03-16 14:21:23-15:21:23</span>
-        </div>
-        <div>
-          <button class="btn mb-4 btn-circle btn-sm" @click="platOrPause">
+        <div class="stat">
+          <div class="stat-figure">
             <svg
-            v-if="!isPlaying"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
-              stroke-width="3"
+              stroke-width="1.5"
               stroke="currentColor"
-              class="w-4 h-4"
+              class="w-10 h-10 stroke-2 text-yellow-50 animate-pulse duration-100"
             >
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
+                d="M12.75 19.5v-.75a7.5 7.5 0 00-7.5-7.5H4.5m0-6.75h.75c7.87 0 14.25 6.38 14.25 14.25v.75M6 18.75a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
               />
             </svg>
-            <svg v-else xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" class="w-4 h-4 stroke-4">
-  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 5.25v13.5m-7.5-13.5v13.5" />
-</svg>
+          </div>
+          <div class="stat-title">State</div>
+          <div class="stat-value">Online</div>
+          <div class="stat-desc">Now</div>
+        </div>
 
-          </button>
+        <div class="stat">
+          <div class="stat-title">Duration</div>
+          <div class="stat-value">
+            <div class="grid grid-flow-col gap-3 text-center auto-cols-max text-sm">
+              <div class="flex flex-col grid-col w-full">
+                <span class="countdown font-mono">
+                  <span :style="`--value:  ${online_duration.hours}`"></span>
+                </span>
+                hours
+              </div>
+              <div class="flex flex-col flex-1 w-full">
+                <span class="countdown font-mono">
+                  <span :style="`--value:  ${online_duration.mins}`"></span>
+                </span>
+                min
+              </div>
+              <div class="flex flex-col flex-1 w-full">
+                <span class="countdown font-mono">
+                  <span :style="`--value:  ${online_duration.senconds}`"></span>
+                </span>
+                sec
+              </div>
+            </div>
+          </div>
+          <div class="stat-desc">Today</div>
         </div>
       </div>
-      <div id="map"></div>
-      <div class=" w-full"><input type="range" min="0" max="100" :value="playPercent" class="range range-success range-sm" /></div>
+      <div
+        tabindex="0"
+        class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box w-full"
+      >
+        <div class="collapse-title text-xl uppercase font-semibold">App info</div>
+        <div class="collapse-content p-0">
+          <div class="overflow-hidden">
+            <div class="border-t bor border-gray-200">
+              <dl>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Device id</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                    {{ deviceId }}
+                  </dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Source</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                    {{ devicesInfo[deviceId]?.platform }}
+                  </dd>
+                </div>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">IP address</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                    {{ devicesInfo[deviceId]?.ip }}
+                  </dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">App version</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                    {{ devicesInfo[deviceId]?.appInfo?.version }}
+                  </dd>
+                </div>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Platfrom</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                    {{ devicesInfo[deviceId]?.appInfo?.platform }}
+                  </dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">System version</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                    {{ devicesInfo[deviceId]?.appInfo?.systemVersion }}
+                  </dd>
+                </div>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">Model</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                    {{ devicesInfo[deviceId]?.appInfo?.model }}
+                  </dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        tabindex="0"
+        class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box w-full"
+      >
+        <div class="collapse-title text-xl font-medium">Service info</div>
+        <div class="collapse-content p-0">
+          <div class="overflow-hidden">
+            <div class="border-t bor border-gray-200">
+              <dl>
+                <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">User ID</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                    {{ devicesInfo[deviceId]?.serviceInfo?.userId }}
+                  </dd>
+                </div>
+                <div class="bg-white px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
+                  <dt class="text-sm font-medium text-gray-500">User name</dt>
+                  <dd class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                    {{ devicesInfo[deviceId]?.serviceInfo?.userName }}
+                  </dd>
+                </div>
+                <div
+                  class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-l-indigo-400 border-dotted border-t-2"
+                >
+                  <dt class="text-sm font-medium text-gray-500">Audio service</dt>
+                  <dd></dd>
+                  <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">enable</dt>
+                  <dd>
+                    <span
+                      v-if="devicesInfo[deviceId]?.serviceInfo?.audioService?.enable"
+                      class="relative flex h-3 w-3"
+                    >
+                      <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75"
+                      ></span>
+                      <span class="inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                    <span v-else class="relative flex h-3 w-3">
+                      <span class="inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                    </span>
+                  </dd>
+                  <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                    audioState
+                  </dt>
+                  <dd>
+                    <input
+                      type="checkbox"
+                      class="toggle toggle-sm toggle-success"
+                      :checked="
+                        devicesInfo[deviceId]?.serviceInfo?.audioService?.audioState ===
+                        '1'
+                      "
+                    />
+                  </dd>
+                  <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                    other app is recording
+                  </dt>
+                  <dd>
+                    <input
+                      type="checkbox"
+                      class="toggle toggle-warning toggle-sm"
+                      :checked="
+                        devicesInfo[deviceId]?.serviceInfo?.audioService
+                          ?.otherAppIsRecording === true
+                      "
+                    />
+                  </dd>
+                </div>
+                <div
+                  class="bg-white-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-l-indigo-400 border-dotted border-t-2"
+                >
+                  <dt class="text-sm font-medium text-gray-500">Gps service</dt>
+                  <dd></dd>
+                  <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">enable</dt>
+                  <dd>
+                    <span
+                      v-if="
+                        devicesInfo[deviceId]?.serviceInfo?.gpsService?.enable === true
+                      "
+                      class="relative flex h-3 w-3"
+                    >
+                      <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75"
+                      ></span>
+                      <span class="inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                    <span v-else class="relative flex h-3 w-3">
+                      <span class="inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                    </span>
+                  </dd>
+                  <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">lat</dt>
+                  <dd>
+                    {{
+                      devicesInfo[deviceId]?.serviceInfo?.gpsService?.latitude?.toFixed(5)
+                    }}
+                  </dd>
+                  <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">long</dt>
+                  <dd>
+                    {{
+                      devicesInfo[deviceId]?.serviceInfo?.gpsService?.longitude?.toFixed(
+                        5
+                      )
+                    }}
+                  </dd>
+                  <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">
+                    address
+                  </dt>
+                  <dd>
+                    <p>{{ devicesInfo[deviceId]?.serviceInfo?.gpsService?.address }}</p>
+                  </dd>
+                </div>
+                <div
+                  class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6 border-l-indigo-400 border-dotted border-t-2"
+                >
+                  <dt class="text-sm font-medium text-gray-500">Step service</dt>
+                  <dd></dd>
+                  <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">enable</dt>
+                  <dd>
+                    <span
+                      v-if="
+                        devicesInfo[deviceId]?.serviceInfo?.stepService?.enable === true
+                      "
+                      class="relative flex h-3 w-3"
+                    >
+                      <span
+                        class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-300 opacity-75"
+                      ></span>
+                      <span class="inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                    </span>
+                    <span v-else class="relative flex h-3 w-3">
+                      <span class="inline-flex rounded-full h-3 w-3 bg-red-500"></span>
+                    </span>
+                  </dd>
+                  <dt class="mt-1 text-sm text-gray-900 sm:col-span-2 sm:mt-0">count</dt>
+                  <dd>{{ devicesInfo[deviceId]?.serviceInfo?.stepService?.count }}</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="basis-2/3">
+      <div class="tabs tab-lg">
+        <a class="tab tab-bordered tab-active">Online time line</a>
+        <a class="tab tab-bordered">Data list</a>
+        <a class="tab tab-bordered">Commands</a>
+      </div>
+      <div class="card mt-5">
+        <div class="text-lg mb-4 font-mono font-extrabold uppercase align-middle">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="currentColor"
+            class="w-6 h-6 inline-block"
+          >
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              d="M3 3v1.5M3 21v-6m0 0l2.77-.693a9 9 0 016.208.682l.108.054a9 9 0 006.086.71l3.114-.732a48.524 48.524 0 01-.005-10.499l-3.11.732a9 9 0 01-6.085-.711l-.108-.054a9 9 0 00-6.208-.682L3 4.5M3 15V4.5"
+            />
+          </svg>
+          TimeLine
+        </div>
+        <div id="timeline5"></div>
+      </div>
+      <div class="card mt-5">
+        <div class="flex flex-row items-center justify-between">
+          <div class="text-lg mb-4 font-mono font-extrabold uppercase align-middle">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="currentColor"
+              class="w-6 h-6 inline-block"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M9 6.75V15m6-6v8.25m.503 3.498l4.875-2.437c.381-.19.622-.58.622-1.006V4.82c0-.836-.88-1.38-1.628-1.006l-3.869 1.934c-.317.159-.69.159-1.006 0L9.503 3.252a1.125 1.125 0 00-1.006 0L3.622 5.689C3.24 5.88 3 6.27 3 6.695V19.18c0 .836.88 1.38 1.628 1.006l3.869-1.934c.317-.159.69-.159 1.006 0l4.994 2.497c.317.158.69.158 1.006 0z"
+              />
+            </svg>
+
+            Path replay
+            <span class="text-xs badge align-middle">2023.03-16 14:21:23-15:21:23</span>
+          </div>
+          <div>
+            <button class="btn mb-4 btn-circle btn-sm" @click="platOrPause">
+              <svg
+                v-if="!isPlaying"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="3"
+                stroke="currentColor"
+                class="w-4 h-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5.25 5.653c0-.856.917-1.398 1.667-.986l11.54 6.348a1.125 1.125 0 010 1.971l-11.54 6.347a1.125 1.125 0 01-1.667-.985V5.653z"
+                />
+              </svg>
+              <svg
+                v-else
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke-width="3"
+                stroke="currentColor"
+                class="w-4 h-4 stroke-4"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M15.75 5.25v13.5m-7.5-13.5v13.5"
+                />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <div id="map"></div>
+        <div class="mt-3">
+          <input
+            type="range"
+            min="0"
+            max="100"
+            :value="playPercent"
+            class="range range-success range-xs"
+          />
+        </div>
+      </div>
     </div>
   </div>
-  <div class="container mx-auto">
-    
-  </div>
-  <div class="lg:pl-[32.0rem]">
-    
-  </div>
+  <div class="container mx-auto"></div>
+  <div class="lg:pl-[32.0rem]"></div>
 </template>
 
 <script setup>
 import { PaperClipIcon } from "@heroicons/vue/20/solid";
-import { WS_CONNECTIONOR } from '../wb';
-import { ref, onMounted, nextTick, inject } from "vue";
+import { WS_CONNECTIONOR } from "../wb";
+import { ref, onMounted, nextTick, inject, computed } from "vue";
 import * as d3 from "d3";
 import { timelines } from "d3-timelines";
-import { useRoute } from 'vue-router';
+import { useRoute } from "vue-router";
+import { min } from "rxjs/operators";
 const isPlaying = ref(false);
 const playPercent = ref(0.0);
 var carMFunc;
-const route = useRoute(); 
-const deviceId = route.params.deviceId
-const devicesInfo = inject('devicesInfo', {})
-console.info(devicesInfo)
+const route = useRoute();
+const deviceId = route.params.deviceId;
+const devicesInfo = inject("devicesInfo", {});
+console.info(devicesInfo);
 function getTime(m) {
   return 1678636800000 + m * 60 * 1000;
 }
+const online_duration = computed(() => {
+  let total = (devicesInfo.value[deviceId]?.updateTime - devicesInfo.value[deviceId]?.connetStartTimestamp)
+  let hours = Math.floor(total / 1000 / 60 / 60 )
+  let mins = Math.floor((total - hours * 60 * 60 * 1000) / 1000 / 60)
+  let senconds = Math.floor( (total - hours * 60 * 60 * 1000 - mins * 60 * 1000)/1000)
+  console.log(total, hours, mins, senconds)
+  return {
+    hours,
+    mins,
+    senconds
+  }
+})
+
 const dataList = ref([
   {
     name: "event",
@@ -383,11 +486,11 @@ onMounted(() => {
     initMap();
   });
 });
-function platOrPause(){
-  if (isPlaying.value){
+function platOrPause() {
+  if (isPlaying.value) {
     // isPlaying.value = false
-  }else{
-    isPlaying.value = true
+  } else {
+    isPlaying.value = true;
     carMFunc();
   }
 }
@@ -668,11 +771,10 @@ function initMap() {
         roation,
         60
       );
-      playPercent.value = e.whiteDot.passedLatLngs.length / data.length * 100
-      console.info(playPercent)
-
+      playPercent.value = (e.whiteDot.passedLatLngs.length / data.length) * 100;
+      console.info(playPercent);
     }
-    
+
     map.easeTo(
       {
         center: position,
@@ -689,12 +791,11 @@ function initMap() {
   //   function btn(){
   //     if (isMoving) return;
   // }
-  
 
   marker.on("move_ended", function () {
     isMoving = false;
-    isPlaying.value = false
-    playPercent.value = 0.0
+    isPlaying.value = false;
+    playPercent.value = 0.0;
     marker.updateGeometries([
       {
         id: "end",
