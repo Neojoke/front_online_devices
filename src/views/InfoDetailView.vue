@@ -1,13 +1,13 @@
 <!--
  * @Date: 2023-03-09 14:18:39
  * @LastEditors: NeoJoke
- * @LastEditTime: 2023-03-15 15:03:01
+ * @LastEditTime: 2023-03-16 16:27:24
  * @FilePath: /tailwindcss_life/src/views/InfoDetailView.vue
 -->
 <template>
   <div class="mx-auto flex flex-row space-x-5">
     <div
-      class="basis-1/3 overflow-y-auto container mx-auto flex flex-col items-center space-y-2 w-full"
+      class="basis-1/3 overflow-y-auto container mx-auto flex flex-col items-center space-y-4 w-full"
     >
       <div class="stats shadow text-primary-content bg-green-400 w-full">
         <div class="stat">
@@ -40,7 +40,7 @@
                 <span class="countdown font-mono">
                   <span :style="`--value:  ${online_duration.hours}`"></span>
                 </span>
-                hours
+                hour
               </div>
               <div class="flex flex-col flex-1 w-full">
                 <span class="countdown font-mono">
@@ -56,16 +56,13 @@
               </div>
             </div>
           </div>
-          <div class="stat-desc">Today</div>
         </div>
       </div>
       <div
-        tabindex="0"
-        class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box w-full"
+        class=" bg-white rounded-md w-full divide-double shadow-xs"
       >
-        <div class="collapse-title text-xl uppercase font-semibold">App info</div>
-        <div class="collapse-content p-0">
-          <div class="overflow-hidden">
+        <div class="text-md uppercase font-semibold p-4">App info</div>
+        <div class="overflow-hidden rounded-box">
             <div class="border-t bor border-gray-200">
               <dl>
                 <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -113,15 +110,12 @@
               </dl>
             </div>
           </div>
-        </div>
       </div>
       <div
-        tabindex="0"
-        class="collapse collapse-arrow border border-base-300 bg-base-100 rounded-box w-full"
+        class="bg-white rounded-md w-full divide-double shadow-md"
       >
-        <div class="collapse-title text-xl font-medium">Service info</div>
-        <div class="collapse-content p-0">
-          <div class="overflow-hidden">
+        <div class="text-md uppercase font-semibold p-4">Service info</div>
+        <div class="overflow-hidden rounded-box">
             <div class="border-t bor border-gray-200">
               <dl>
                 <div class="bg-gray-50 px-4 py-5 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-6">
@@ -254,10 +248,9 @@
               </dl>
             </div>
           </div>
-        </div>
       </div>
     </div>
-    <div class="basis-2/3">
+    <div class="basis-2/3 ">
       <div class="tabs tab-lg">
         <a class="tab tab-bordered tab-active">Online time line</a>
         <a class="tab tab-bordered">Data list</a>
@@ -374,8 +367,9 @@ console.info(devicesInfo);
 function getTime(m) {
   return 1678636800000 + m * 60 * 1000;
 }
+const currentDate = ref(Date.now())
 const online_duration = computed(() => {
-  let total = (devicesInfo.value[deviceId]?.updateTime - devicesInfo.value[deviceId]?.connetStartTimestamp)
+  let total = (currentDate.value - devicesInfo.value[deviceId]?.connetStartTimestamp)
   let hours = Math.floor(total / 1000 / 60 / 60 )
   let mins = Math.floor((total - hours * 60 * 60 * 1000) / 1000 / 60)
   let senconds = Math.floor( (total - hours * 60 * 60 * 1000 - mins * 60 * 1000)/1000)
@@ -386,7 +380,9 @@ const online_duration = computed(() => {
     senconds
   }
 })
-
+setInterval(()=>{
+  currentDate.value = Date.now()
+}, 1000)
 const dataList = ref([
   {
     name: "event",
